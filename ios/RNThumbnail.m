@@ -42,7 +42,8 @@ RCT_EXPORT_METHOD(get:(NSString *)filepath resolve:(RCTPromiseResolveBlock)resol
         if (resolve)
             resolve(@{ @"path" : fullPath,
                        @"width" : [NSNumber numberWithFloat: thumbnail.size.width],
-                       @"height" : [NSNumber numberWithFloat: thumbnail.size.height] });
+                       @"height" : [NSNumber numberWithFloat: thumbnail.size.height],
+                       @"duration" : [NSNumber numberWithFloat: CMTimeGetSeconds(asset.duration) * 1000] });
     } @catch(NSException *e) {
         reject(e.reason, nil, nil);
     }
